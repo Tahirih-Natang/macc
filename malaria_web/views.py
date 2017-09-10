@@ -124,9 +124,3 @@ class ListAppUsersView(LoginRequiredMixin, ListView):
 
     template_name = 'malaria/list_app_users.html'
     redirect_field_name = 'redirect_to'
-
-    def get_context_data(self, **kwargs):
-        context = super(ViewPostView, self).get_context_data(**kwargs)
-        revpost_list = RevPost.objects.filter(owner_rev_post_id=self.kwargs['pk'])
-        context['revpost_list'] = revpost_list
-        return context

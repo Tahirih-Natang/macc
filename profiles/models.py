@@ -12,14 +12,14 @@ class Pcuser(models.Model):
     gender_choices = (('Male', 'Male'), ('Female', 'Female'), ('Restricted', 'Prefer not to say'))
     # Username
     user = models.OneToOneField(User)
-    # Location
-    location = models.TextField(max_length=300)
-    # Phone number
+    #location
+    location = models.TextField(max_length=300, default='N.A.')
+    #phone number
     phone_regex = RegexValidator(r'\+\d{8,15}$', message = "Phone number must have correct format. +999999 and up to 15 digits allowed")
-    phone = models.CharField(validators=[phone_regex],blank=False, max_length=15 )
-    # Gender
-    gender = models.CharField(max_length=10,choices = gender_choices, default='0')
-    # For reset_password
+    phone = models.CharField(validators=[phone_regex],blank=False, max_length=15 ,default='N.A.')
+    #gender
+    gender = models.CharField(max_length=10,choices = gender_choices, default='Restricted')
+    #for reset_password
     reset_pass = models.CharField(default="",max_length=320)
 
     # Define the file storage system
