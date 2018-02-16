@@ -58,4 +58,4 @@ class View_Test(TestCase):
         self.assertTemplateUsed("malaria/view_post.html")
 
     def test_list_app_users_view(self):
-self.assertTemplateUsed("malaria/list_app_users.html")
+        self.assertTemplateUsed("malaria/list_app_users.html")
