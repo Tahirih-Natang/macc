@@ -62,8 +62,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'social_django',
     'firstaide',
-
+    'django_wysiwyg',
+    'ckeditor',
 )
+
+DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
