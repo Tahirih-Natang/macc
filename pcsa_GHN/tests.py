@@ -29,4 +29,3 @@ class Ghn_Contact_Form(TestCase):
     def test_ghn_ContactForm_invalid(self):
         contact = ContactForm(data={'office_name': "null", 'contact_number': "string"})
         self.assertFalse(contact.is_valid())
-        
