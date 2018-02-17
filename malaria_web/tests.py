@@ -22,7 +22,7 @@ class Post_Form_Test(TestCase):
         form = PostForm(data={'title_post': "", 'description_post': "mp", 'link_post': "mp", 'photo': ""})
         self.assertFalse(form.is_valid())
 
-class View_Test(TestCase)
+class View_Test(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
         with open('credentials.json') as json_data:
