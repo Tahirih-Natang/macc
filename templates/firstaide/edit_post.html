@@ -3,16 +3,13 @@
 {% block card_content %}
 <br>
 <center>
-    <h2> 
-        <font color="#2c0f00"> FirstAide APIs : Posts</font> 
-    </h2>
+    <h2><font color="#2c0f00"> FirstAide APIs : Posts</font></h2>
 </center>
 <div class="well">
     <h2 class="text-center inverted-font">Edit Card</h2>
     <br>
     <form class="form-horizontal" method="post">
         {% csrf_token %}
-        
         <div class="form-group">
             <label class="col-sm-2 control-label inverted-font">Post ID</label>
             <div class="col-sm-9">
@@ -34,8 +31,11 @@
         <div class="form-group">
             <label class="col-sm-2 control-label inverted-font">Card Content</label>
             <div class="col-sm-9">
-                <textarea class="form-control" rows="18" name="card_content" >{% if form.card_content.value %}{{ form.card_content.value }}{% endif %}</textarea>
-                <p class="help-block inverted-font">    
+              {% load wysiwyg %}
+              {% wysiwyg_setup %}
+                <textarea id="foo" class="form-control" rows="18" name="card_content" >{% if form.card_content.value %}{{ form.card_content.value }}{% endif %}</textarea>
+              {% wysiwyg_editor "foo" %}
+                <p class="help-block inverted-font">
                     <strong>
                         {% if form.card_content.errors %}
                             {% for error in form.card_content.errors %}
@@ -53,7 +53,7 @@
             </div>
         </div>
     </form>
-    <br>    
+    <br/>
 </div>
-<br><br>
+<br/>
 {% endblock %}

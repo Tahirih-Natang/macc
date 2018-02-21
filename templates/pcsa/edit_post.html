@@ -3,7 +3,7 @@
 {% block content %}
 
 <h2 class="text-center">
-    FirstAide : infoHub 
+    FirstAide : infoHub
 </h2>
 <div class="well">
     <h2 class="text-center">Edit Post</h2>
@@ -28,8 +28,11 @@
         <div class="form-group">
             <label class="col-sm-2 control-label ">Description <span class="text-danger" >*</span></label>
             <div class="col-sm-9">
-                <textarea class="form-control" rows="18" name="description" minlength=100>{% if form.title.value %}{{ form.description.value }}{% endif %}</textarea>
-                <p class="help-block ">    
+              {% load wysiwyg %}
+              {% wysiwyg_setup %}
+                <textarea id="foo" class="form-control" rows="18" name="description" minlength=100>{% if form.title.value %}{{ form.description.value }}{% endif %}</textarea>
+              {% wysiwyg_editor "foo" %}
+                <p class="help-block ">
                     <strong>
                         {% if form.description.errors %}
                             {% for error in form.description.errors %}
@@ -46,7 +49,7 @@
                 <a href="{% url 'pcsa:list_posts' %}" class="btn btn-danger">Cancel</a>
             </div>
         </div>
-    </form>    
+    </form>
 </div>
 <br><br><br>
 {% endblock %}
