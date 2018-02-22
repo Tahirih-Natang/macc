@@ -11,11 +11,11 @@ post_update = Signal()
 class Contact(models.Model):
     office_name = models.CharField(max_length=200)
     contact_number = models.CharField(
-        max_length=20,
+        max_length=15,
         validators=[
             RegexValidator(
-                r'^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$',
-                message="Please enter a valid phone number",
+                r'^\+?[1-9]\d{1,14}$',
+                message="Please enter a valid phone number. e.g. +44 7911 123456",
             ),
         ],
     )
