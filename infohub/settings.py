@@ -66,10 +66,6 @@ INSTALLED_APPS = (
     'ckeditor',
 )
 
-<<<<<<< HEAD
-=======
-
->>>>>>> afe468f647de56831ae3f10a7ef971c6cdd8c0ad
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
