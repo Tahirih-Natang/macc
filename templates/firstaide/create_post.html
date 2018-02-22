@@ -88,7 +88,6 @@ function definetype(val) {
     }
 
 }
-  
 </script>
 {% block content %}
 <br><br><br>
@@ -102,7 +101,6 @@ function definetype(val) {
     <br>
     <form class="form-horizontal" method="post">
         {% csrf_token %}
-        
         <div class="form-group">
             <label class="col-sm-2 control-label inverted-font">Post Category</label>
             <div class="col-sm-9">
@@ -129,8 +127,6 @@ function definetype(val) {
                     <option value="help-a-friend">help-a-friend</option>
                     <option value="mythbusters">mythbusters</option>
                     <option value="sexual-harassment">sexual-harassment</option>
-                    
-
                 </select>
                 <strong>
                         {% if form.post_id.errors %}
@@ -146,7 +142,10 @@ function definetype(val) {
         <div class="form-group">
             <label class="col-sm-2 control-label inverted-font">Card Content</label>
             <div class="col-sm-9">
-                <textarea class="form-control" rows="18" name="card_content" >{% if form.card_content.value %}{{ form.card_content.value }}{% endif %}</textarea>
+              {% load wysiwyg %}
+              {% wysiwyg_setup %}
+                <textarea id="foo" class="form-control" rows="18" name="card_content" >{% if form.card_content.value %}{{ form.card_content.value }}{% endif %}</textarea>
+                {% wysiwyg_editor "foo" %}
                 <p class="help-block inverted-font">
                     <strong>
                         {% if form.card_content.errors %}

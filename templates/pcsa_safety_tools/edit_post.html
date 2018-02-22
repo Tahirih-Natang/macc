@@ -42,8 +42,11 @@
         <div class="form-group">
             <label class="col-sm-2 control-label ">Description <span class="text-danger" >*</span></label>
             <div class="col-sm-9">
-                <textarea class="form-control" rows="18" name="description" minlength=100>{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
-                <p class="help-block ">    
+              {% load wysiwyg %}
+              {% wysiwyg_setup %}
+                <textarea id="foo" class="form-control" rows="18" name="description" minlength=100>{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
+              {% wysiwyg_editor "foo" %}
+                <p class="help-block ">
                     <strong>
                         {% if form.description.errors %}
                             {% for error in form.description.errors %}
@@ -61,7 +64,7 @@
             </div>
         </div>
     </form>
-    <br>    
+    <br>
 </div>
 <br><br><br>
 {% endblock %}

@@ -62,7 +62,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'social_django',
     'firstaide',
-
+    'django_wysiwyg',
+    'ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -160,6 +161,8 @@ EMAIL_PORT = 465
 SWAGGER_SETTINGS = {
     'is_authenticated': True,
 }
+
+DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 
 
 # Django allauth configurations
