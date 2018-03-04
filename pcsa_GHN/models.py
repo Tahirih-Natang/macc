@@ -1,8 +1,6 @@
 from django.db import models
-
 from profiles.models import Pcuser
 from django.core.validators import RegexValidator
-
 from django.core.files.storage import FileSystemStorage
 from profiles.models import Pcuser
 from django.db.models.signals import post_save
@@ -12,14 +10,22 @@ post_update = Signal()
 
 class Contact(models.Model):
     office_name = models.CharField(max_length=200)
-    contact_number = models.BigIntegerField()
+    contact_number = models.CharField(
+        max_length=15,
+        validators=[
+            RegexValidator(
+                r'^\+?[1-9]\d{1,14}$',
+                message="Please enter a valid phone number. e.g. +44 7911 123456",
+            ),
+        ],
+    )
 
     def __str__(self):
         return self.office_name
 
     def get_absolute_url(self):
         return '/gethelpnow/view_contact/%i' % self.id
-        
+
     class Meta:
     	verbose_name = 'Contact'
     	verbose_name_plural = 'Contacts'
@@ -47,11 +53,11 @@ class ghnPost(models.Model):
     # To get the url of the model in templates
     def get_absolute_url(self):
         return '/gethelpnow/view_post/%i' % self.id
-    
+
     # To access the model name in templates
     def model_name(self):
         return 'PCSA Get Help Now'
-        
+
     class Meta:
     	verbose_name = 'Get Help Now Post'
     	verbose_name_plural = 'Get Help Now Posts'
@@ -87,7 +93,7 @@ class ghnRevPost(models.Model):
 
     def __str__(self):
         return self.owner_rev.user.username
-        
+
     class Meta:
         verbose_name = 'GHN Reviewed Post'
         verbose_name_plural = 'GHN Reviewed Posts'
